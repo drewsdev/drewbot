@@ -36,6 +36,21 @@ export const commands = [
     ],
   },
   {
+    name: 'weather',
+    description: 'Get current weather for an area.',
+    type: 1,
+    integration_types: [INSTALL_TYPES.USER_INSTALL],
+    contexts: [
+      INTERACTION_CONTEXTS.GUILD,
+      INTERACTION_CONTEXTS.BOT_DM,
+      INTERACTION_CONTEXTS.PRIVATE_CHANNEL,
+    ],
+    options: [
+      {
+        name: 'area',
+        description: 'City or area to search (for example: Seattle or London).',
+        type: 3,
+        required: true,
     name: 'music',
     description: 'Play audio from YouTube or SoundCloud in a voice channel.',
     type: 1,

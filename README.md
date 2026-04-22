@@ -27,6 +27,7 @@ This project includes a mix of **user install** and **guild install** commands:
 - `ping` - guild install only
 - `hello` - user install only
 - `about` - both user and guild install
+- `weather` - user install command for current weather by area
 
 Register commands globally:
 

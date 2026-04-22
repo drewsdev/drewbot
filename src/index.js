@@ -6,6 +6,7 @@ import {
   InteractionContextType,
   Partials,
 } from 'discord.js';
+import { weatherCommand } from './weather.js';
 import {
   autoplayMusic,
   playMusic,
@@ -56,6 +57,9 @@ client.on(Events.InteractionCreate, async (interaction) => {
     return;
   }
 
+  if (interaction.commandName === 'weather') {
+    const area = interaction.options.getString('area', true);
+    await weatherCommand(interaction, area);
   if (interaction.commandName === 'music') {
     const subcommand = interaction.options.getSubcommand();
 
