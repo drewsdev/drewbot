@@ -51,6 +51,52 @@ export const commands = [
         description: 'City or area to search (for example: Seattle or London).',
         type: 3,
         required: true,
+    name: 'music',
+    description: 'Play audio from YouTube or SoundCloud in a voice channel.',
+    type: 1,
+    integration_types: [INSTALL_TYPES.GUILD_INSTALL],
+    contexts: [INTERACTION_CONTEXTS.GUILD],
+    options: [
+      {
+        name: 'play',
+        description: 'Join your voice channel and play a URL or search text.',
+        type: 1,
+        options: [
+          {
+            name: 'query',
+            description: 'A YouTube or SoundCloud URL, or search text.',
+            type: 3,
+            required: true,
+          },
+        ],
+      },
+      {
+        name: 'queue',
+        description: 'Show the current track and upcoming queue.',
+        type: 1,
+      },
+      {
+        name: 'skip',
+        description: 'Skip the current track.',
+        type: 1,
+      },
+      {
+        name: 'autoplay',
+        description: 'Toggle related-track autoplay for this guild.',
+        type: 1,
+        options: [
+          {
+            name: 'enabled',
+            description: 'Set autoplay on or off. Omit to toggle.',
+            type: 5,
+            required: false,
+          },
+        ],
+      },
+      {
+        name: 'stop',
+        description: 'Stop playback and disconnect the bot.',
+        type: 1,
       },
     ],
   },

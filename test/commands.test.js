@@ -30,4 +30,17 @@ test('weather command is user-install and requires an area option', () => {
   assert.ok(Array.isArray(weatherCommand.options));
   assert.equal(weatherCommand.options[0].name, 'area');
   assert.equal(weatherCommand.options[0].required, true);
+test('music command is guild-only and includes queue controls', () => {
+  const musicCommand = commands.find((command) => command.name === 'music');
+
+  assert.ok(musicCommand);
+  assert.deepEqual(musicCommand.integration_types, [INSTALL_TYPES.GUILD_INSTALL]);
+  assert.ok(Array.isArray(musicCommand.options));
+  assert.equal(musicCommand.options.length, 5);
+  assert.equal(musicCommand.options[0].name, 'play');
+  assert.equal(musicCommand.options[0].options[0].name, 'query');
+  assert.equal(musicCommand.options[1].name, 'queue');
+  assert.equal(musicCommand.options[2].name, 'skip');
+  assert.equal(musicCommand.options[3].name, 'autoplay');
+  assert.equal(musicCommand.options[4].name, 'stop');
 });
