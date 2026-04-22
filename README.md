@@ -40,6 +40,16 @@ Register guild commands for fast testing:
 npm run register:guild
 ```
 
+## Music command
+
+The `music` command is guild-only and supports:
+
+- `play query` - queue a YouTube or SoundCloud URL, or search text
+- `queue` - show the current track and upcoming queue
+- `skip` - skip the current track
+- `autoplay` - toggle related-track autoplay for the guild
+- `stop` - clear the queue and disconnect
+
 ## Run bot
 
 ```bash
