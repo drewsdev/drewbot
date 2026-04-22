@@ -6,6 +6,7 @@ import {
   InteractionContextType,
   Partials,
 } from 'discord.js';
+import { weatherCommand } from './weather.js';
 
 const token = process.env.DISCORD_TOKEN;
 
@@ -46,6 +47,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
           : 'private channel';
 
     await interaction.reply(`Running in ${context}.`);
+    return;
+  }
+
+  if (interaction.commandName === 'weather') {
+    const area = interaction.options.getString('area', true);
+    await weatherCommand(interaction, area);
     return;
   }
 

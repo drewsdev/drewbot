@@ -21,3 +21,13 @@ test('all commands include name and description', () => {
     assert.ok(command.description);
   }
 });
+
+test('weather command is user-install and requires an area option', () => {
+  const weatherCommand = commands.find((command) => command.name === 'weather');
+
+  assert.ok(weatherCommand);
+  assert.deepEqual(weatherCommand.integration_types, [INSTALL_TYPES.USER_INSTALL]);
+  assert.ok(Array.isArray(weatherCommand.options));
+  assert.equal(weatherCommand.options[0].name, 'area');
+  assert.equal(weatherCommand.options[0].required, true);
+});
