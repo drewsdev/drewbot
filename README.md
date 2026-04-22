@@ -8,7 +8,7 @@ including command registration and interaction handling.
 
 ```bash
 # navigate to directory
-cd /home/runner/work/drewbot/drewbot
+cd drewbot
 
 # install dependencies
 npm install
@@ -48,4 +48,4 @@ npm start
 
 ## Getting started docs
 
-- https://docs.discord.com/developers/quick-start/getting-started
+- https://discord.com/developers/docs/quick-start/getting-started
