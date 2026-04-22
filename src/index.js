@@ -6,6 +6,13 @@ import {
   InteractionContextType,
   Partials,
 } from 'discord.js';
+import {
+  autoplayMusic,
+  playMusic,
+  showQueue,
+  skipMusic,
+  stopMusic,
+} from './music.js';
 
 const token = process.env.DISCORD_TOKEN;
 
@@ -46,6 +53,40 @@ client.on(Events.InteractionCreate, async (interaction) => {
           : 'private channel';
 
     await interaction.reply(`Running in ${context}.`);
+    return;
+  }
+
+  if (interaction.commandName === 'music') {
+    const subcommand = interaction.options.getSubcommand();
+
+    if (subcommand === 'play') {
+      const query = interaction.options.getString('query', true);
+      await playMusic(interaction, query);
+      return;
+    }
+
+    if (subcommand === 'queue') {
+      await showQueue(interaction);
+      return;
+    }
+
+    if (subcommand === 'skip') {
+      await skipMusic(interaction);
+      return;
+    }
+
+    if (subcommand === 'autoplay') {
+      const enabled = interaction.options.getBoolean('enabled');
+      await autoplayMusic(interaction, enabled);
+      return;
+    }
+
+    if (subcommand === 'stop') {
+      await stopMusic(interaction);
+      return;
+    }
+
+    await interaction.reply({ content: 'Unknown music command.', ephemeral: true });
     return;
   }
 
